@@ -1,7 +1,7 @@
 % Homework LaTeX class. Inherits from `article`.
 % (c) 2020 Ethan Wu CC BY-SA 4.0
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{homework}[2020/10/12 Basic Homework Class]
+\ProvidesClass{homework}[2020/10/17 Basic Homework Class]
 
 %%% conditionals %%%
 \RequirePackage{xifthen}
@@ -51,7 +51,8 @@
 
 %%% math %%%
 \usepackage{siunitx}    % units
-\usepackage{amsmath}
+\usepackage[leqno,      % left-aligned equation tags
+           ]{amsmath}   % aligned math environments, etc.
 \usepackage{mathtools}
 
 \sisetup{separate-uncertainty=true}
@@ -80,20 +81,20 @@
 \ifthenelse{\boolean{@useLogicalOperators}}{%
     % https://tex.stackexchange.com/a/299805 V
     \newcommand{\DeclareMathActive}[3]{%
-    % #1 is the character, #2 is bool to check, #3 is the definition
-    \expandafter\edef\csname keep@#1@code\endcsname{\mathchar\the\mathcode`#1 }
-    \begingroup\lccode`~=`#1\relax
-    \lowercase{\endgroup\def~}{\ifthenelse{\boolean{#2}}{#3}{\std#1}}%
-    \AtBeginDocument{\mathcode`#1="8000 }%
+        % #1 is the character, #2 is bool to check, #3 is the definition
+        \expandafter\edef\csname keep@#1@code\endcsname{\mathchar\the\mathcode`#1 }
+        \begingroup\lccode`~=`#1\relax
+        \lowercase{\endgroup\def~}{\ifthenelse{\boolean{#2}}{#3}{\std{#1}}}%
+        \AtBeginDocument{\mathcode`#1="8000 }%
     }
 
-    \newcommand{\std}[1]{\csname keep@#1@code\endcsname}
+    \newcommand{\std}[1]{\csname keep@#1@code\endcsname{}}
     % \iftutex
     % \patchcmd{\newmcodes@}{\Umathcodenum `\-\relax}{\std@minuscode\relax}{}{\ddt}
     % \else
     % \patchcmd{\newmcodes@}{\mathcode`\-\relax}{\std@minuscode\relax}{}{\ddt}
     % \fi
-    \AtBeginDocument{\edef\std@minuscode{\the\mathcode`-}}
+    % \AtBeginDocument{\edef\std@minuscode{\the\mathcode`-}}
     % https://tex.stackexchange.com/a/299805 ^
 
     \newboolean{@logic}\setboolean{@logic}{false}
