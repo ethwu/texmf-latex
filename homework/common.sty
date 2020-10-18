@@ -1,7 +1,30 @@
 % Random common macros.
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{common}[2020/10/07 Common macros.]
+\ProvidesClass{common}[2020/10/18 Common macros.]
 
 \newcommand*{\para}[1]{\emph{#1}\enspace}
+
+% Logical Arguments
+\newcommand*\Premise{\text{Premise}}
+
+\newcommand*\HypotheticalSyllogism[2]{\text{Hypothetical Syllogism~(#1, #2)}}
+\newcommand*\ModusPonens[2]{\text{Modus Ponens~(#1, #2)}}
+\newcommand*\ModusTollens[2]{\text{Modus Tollens~(#1, #2)}}
+
+\newcommand*\UniversalInstantiation[1]{\text{Universal Instantiation~(#1)}}
+
+\newcommand*\@Law[2]{\text{#1\ifthenelse{\NOT\isempty{#2}}{~(#2)}{}}}
+
+\newcommand*\Absorptive[1][]{\@Law{Absorptive}{#1}}
+\newcommand*\Associative[1][]{\@Law{Associative}{#1}}
+\newcommand*\Commutative[1][]{\@Law{Commutative}{#1}}
+\newcommand*\Contradiction[1][]{\@Law{Contradiction}{#1}}
+\newcommand*\Contrapositive[1][]{\@Law{Contrapositive}{#1}}
+\newcommand*\DeMorgan[1][]{\@Law{De~Morgan's Law}{#1}}
+\newcommand*\Distributive[1][]{\@Law{Distributive}{#1}}
+\newcommand*\Idempotent[1][]{\@Law{Idempotent}{#1}}
+\newcommand*\Identity[1][]{\@Law{Identity}{#1}}
+\newcommand*\Implication[1][]{\@Law{Equivalent to the Conditional}{#1}}
+\newcommand*\Simplification[1][]{\@Law{Simplification}{#1}}
 
 \endinput

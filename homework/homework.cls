@@ -53,7 +53,7 @@
 \usepackage{siunitx}    % units
 \usepackage[leqno,      % left-aligned equation tags
            ]{amsmath}   % aligned math environments, etc.
-\usepackage{amssymb}    % math fonts
+\usepackage{amsfonts}    % math fonts
 \usepackage{mathtools}
 
 \sisetup{separate-uncertainty=true}
