@@ -59,12 +59,19 @@
 \sisetup{separate-uncertainty=true}
 
 \DeclarePairedDelimiter\@abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\@ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\@floor{\lfloor}{\rfloor}
 \DeclarePairedDelimiter\@norm{\lVert}{\rVert}
 
 % swap `\abs` and `\abs*`
 \def\abs{\@ifstar{\@abs}{\@abs*}}
+\def\ceil{\@ifstar{\@ceil}{\@ceil*}}
+\def\floor{\@ifstar{\@floor}{\@floor*}}
 \def\norm{\@ifstar{\@norm}{\@norm*}}
 
+\newcommand*{\set}[1]{\ensuremath{\ifthenelse{\isempty{#1}}
+                                             {\emptyset}
+                                             {\{\,#1\,\}}}}
 % single-layer implication arrow
 \DeclareRobustCommand\implies{\to}
 % double-sided biconditional arrow
