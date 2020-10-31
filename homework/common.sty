@@ -1,8 +1,12 @@
 % Random common macros.
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{common}[2020/10/18 Common macros.]
+\ProvidesClass{common}[2020/10/31 Common macros.]
 
 \newcommand*{\para}[1]{\emph{#1}\enspace}
+
+\RequirePackage{textcase}
+% `emph` style small caps
+\newcommand{\impt}[1]{\textsc{\MakeTextLowercase{#1}}}
 
 % Logical Arguments
 \newcommand*\Premise{\text{Premise}}
