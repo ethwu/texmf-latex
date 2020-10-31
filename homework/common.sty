@@ -8,6 +8,12 @@
 % `emph` style small caps
 \newcommand{\impt}[1]{\textsc{\MakeTextLowercase{#1}}}
 
+\RequirePackage{titlesec}
+% replace `paragraph` and `subparagraph` bold with italics
+\titleformat{\paragraph}[runin]{\normalfont\normalsize\itshape}{\theparagraph}{1em}{}
+\titleformat{\subparagraph}[runin]{\normalfont\normalsize\itshape}{\thesubparagraph}{1em}{}
+
+
 % Logical Arguments
 \newcommand*\Premise{\text{Premise}}
 
