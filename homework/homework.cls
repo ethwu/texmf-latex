@@ -1,7 +1,7 @@
 % Homework LaTeX class. Inherits from `article`.
 % (c) 2020 Ethan Wu CC BY-SA 4.0
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{homework}[2020/10/17 Basic Homework Class]
+\ProvidesClass{homework}[2020/11/7 Basic Homework Class]
 
 %%% conditionals %%%
 \RequirePackage{xifthen}
@@ -62,6 +62,7 @@
 \DeclarePairedDelimiter\@ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\@floor{\lfloor}{\rfloor}
 \DeclarePairedDelimiter\@norm{\lVert}{\rVert}
+\DeclareMathOperator\lcm{lcm}
 
 % swap `\abs` and `\abs*`
 \def\abs{\@ifstar{\@abs}{\@abs*}}
