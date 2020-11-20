@@ -1,7 +1,7 @@
 % Homework LaTeX class. Inherits from `article`.
 % (c) 2020 Ethan Wu CC BY-SA 4.0
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{homework}[2020/11/7 Basic Homework Class]
+\ProvidesClass{homework}[2020-11-19 Basic Homework Class]
 
 %%% conditionals %%%
 \RequirePackage{xifthen}
@@ -50,11 +50,11 @@
 \RequirePackage{hyphenat}
 
 %%% math %%%
-\usepackage{siunitx}    % units
-\usepackage[leqno,      % left-aligned equation tags
+\RequirePackage{siunitx}    % units
+\RequirePackage[leqno,      % left-aligned equation tags
            ]{amsmath}   % aligned math environments, etc.
-\usepackage{amsfonts}    % math fonts
-\usepackage{mathtools}
+\RequirePackage{amsfonts}    % math fonts
+\RequirePackage{mathtools}
 
 \sisetup{separate-uncertainty=true}
 
@@ -165,6 +165,20 @@
             \newcommand*{\nipa}[1]{\@transcription{[}{#1}{]}}%
             \newcommand*{\orth}[1]{\@transcription{⟨}{#1}{⟩}}%
             \newcommand*{\pron}[1]{\@transcription{\textbackslash}{#1}{\textbackslash}}%
+            % wrap in brackets
+            % \br[r]{l}{text}
+            %   [r=]    - annotation on right side
+            %   l       - annotation on left side
+            %   text    - text to wrap
+            \newcommand*{\br}[3][]{[%
+                \ifthenelse{\NOT\isempty{#2}}%
+                    {\raisebox{-.4ex}{\impt{\textup{#2}}}\,}%
+                    {}%
+                #3
+                \ifthenelse{\NOT\isempty{#1}}%
+                    {\,\raisebox{-.4ex}{\impt{\textup{#1}}}}%
+                    {}%
+                ]}
            }{}%
 
 %%% localization %%%
