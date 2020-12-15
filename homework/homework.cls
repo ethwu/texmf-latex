@@ -1,7 +1,7 @@
 % Homework LaTeX class. Inherits from `article`.
 % (c) 2020 Ethan Wu CC BY-SA 4.0
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{homework}[2020-12-01 Basic Homework Class]
+\ProvidesClass{homework}[2020-12-15 Basic Homework Class]
 
 %%% conditionals %%%
 \RequirePackage{xifthen}
@@ -166,20 +166,22 @@
             \newcommand*{\nipa}[1]{\@transcription{[}{#1}{]}}%
             \newcommand*{\orth}[1]{\@transcription{⟨}{#1}{⟩}}%
             \newcommand*{\pron}[1]{\@transcription{\textbackslash}{#1}{\textbackslash}}%
+            \renewcommand*{\lb}[1]{[%
+                \ifthenelse{\NOT\isempty{#2}}%
+                    {\raisebox{-.4ex}{\impt{\textup{#2}}}\,}%
+                    {}%
+            }%
+            \renewcommand*{\rb}[1]{%
+                \ifthenelse{\NOT\isempty{#1}}%
+                    {\,\raisebox{-.4ex}{\impt{\textup{#1}}}}%
+                    {}%
+                ]}%
             % wrap in brackets
             % \br[r]{l}{text}
             %   [r=]    - annotation on right side
             %   l       - annotation on left side
             %   text    - text to wrap
-            \newcommand*{\br}[3][]{[%
-                \ifthenelse{\NOT\isempty{#2}}%
-                    {\raisebox{-.4ex}{\impt{\textup{#2}}}\,}%
-                    {}%
-                #3
-                \ifthenelse{\NOT\isempty{#1}}%
-                    {\,\raisebox{-.4ex}{\impt{\textup{#1}}}}%
-                    {}%
-                ]}
+            \newcommand*{\br}[3][]{[\lb{#2}#3\rb{#1}}%
            }{}%
 
 %%% localization %%%
