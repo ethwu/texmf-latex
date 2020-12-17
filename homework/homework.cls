@@ -1,7 +1,9 @@
 % Homework LaTeX class. Inherits from `article`.
 % (c) 2020 Ethan Wu CC BY-SA 4.0
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{homework}[2020-12-15 Basic Homework Class]
+\ProvidesClass{homework}[2020-12-17 Basic Homework Class]
+
+\RequirePackage{etoolbox}
 
 %%% conditionals %%%
 \RequirePackage{xifthen}
@@ -157,10 +159,12 @@
 %%% linguistics packages %%%
 \ifthenelse{\boolean{@useLinguisticsPackages}}%
            {\RequirePackage{gb4e}\noautomath{}%
+            \apptocmd{\gl@stop}{\nobreak}{}{}% prevent break between `gll` and `glt`
             \RequirePackage{vowel}%
             \newcommand*{\rom}[1]{\emph{#1}}%
             \newcommand*{\eng}[1]{`#1'}%
             \newcommand*{\tlpair}[2]{\rom{#1}~\eng{#2}}%
+            \newcommand*{\struct}[1]{{\ttfamily\setlength{\spaceskip}{0.6em plus 0.6em minus 0.4em}#1}}
             \newcommand*{\@transcription}[3]{\textup{\nohyphens{#1#2#3}}}%
             \newcommand*{\wipa}[1]{\@transcription{/}{#1}{/}}%
             \newcommand*{\nipa}[1]{\@transcription{[}{#1}{]}}%
