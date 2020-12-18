@@ -170,22 +170,24 @@
             \newcommand*{\nipa}[1]{\@transcription{[}{#1}{]}}%
             \newcommand*{\orth}[1]{\@transcription{⟨}{#1}{⟩}}%
             \newcommand*{\pron}[1]{\@transcription{\textbackslash}{#1}{\textbackslash}}%
-            \renewcommand*{\lb}[1]{[%
+            \renewcommand*{\lb}[1]{\textup{[%
                 \ifthenelse{\NOT\isempty{#1}}%
-                    {\raisebox{-.4ex}{\impt{\textup{#1}}}\,}%
+                    {\raisebox{-.4ex}{\impt{#1}}\,}}%
                     {}%
             }%
-            \renewcommand*{\rb}[1]{%
+            \renewcommand*{\rb}[1]{\textup{%
                 \ifthenelse{\NOT\isempty{#1}}%
-                    {\,\raisebox{-.4ex}{\impt{\textup{#1}}}}%
+                    {\,\raisebox{-.4ex}{\impt{#1}}}%
                     {}%
-                ]}%
+                ]}}%
             % wrap in brackets
             % \br[r]{l}{text}
             %   [r=]    - annotation on right side
             %   l       - annotation on left side
             %   text    - text to wrap
             \newcommand*{\br}[3][]{[\lb{#2}#3\rb{#1}}%
+            % restyle interlinear glosses' first line
+            \let\eachwordone=\rom%
            }{}%
 
 %%% localization %%%
@@ -204,4 +206,13 @@
                 noabbrev,       % full reference names
                 ]{cleveref}
 
+\ifthenelse{\boolean{@useLinguisticsPackages}}{%
+            \crefalias{xnumi}{example}%
+            \crefalias{xnumii}{example}%
+            \crefalias{xnumiii}{example}%
+            \crefalias{xnumiv}{example}%
+            \crefname{example}{example}{examples}%
+            \creflabelformat{example}{(#2#1#3)}%
+    }{%
+}%
 \endinput
