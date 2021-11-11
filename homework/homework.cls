@@ -1,7 +1,7 @@
 % Homework LaTeX class. Inherits from `article`.
 % (c) 2020 Ethan Wu CC BY-SA 4.0
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{homework}[2020-12-17 Basic Homework Class]
+\ProvidesClass{homework}[2021-11-10 Basic Homework Class]
 
 \RequirePackage{etoolbox}
 
@@ -42,14 +42,24 @@
 \RequirePackage[T1]{fontenc}
 
 %%% page setup %%%
-\RequirePackage[letterpaper,
-                margin=1.25in]{geometry}
+\ifthenelse{\boolean{@useWordStyle}}{%
+    \RequirePackage{wordlike}%
+    \RequirePackage[doublespacing]{setspace}%
+}{%
+    \RequirePackage[letterpaper,
+                    margin=1.25in]{geometry}%
+}
+
 
 %%% typefaces %%%
 \RequirePackage{fontspec}
 \RequirePackage[babel, tracking=true]{microtype}
 % improved hyphenation
 \RequirePackage{hyphenat}
+% caps/lowercase
+\RequirePackage{textcase}
+% `emph` style small caps
+\newcommand{\impt}[1]{\textsc{\MakeTextLowercase{#1}}}
 
 %%% math %%%
 \RequirePackage{siunitx}    % units
@@ -146,12 +156,6 @@
 
 \RequirePackage{float}      % manipulate float environments
 \RequirePackage{graphicx}   % include illustrations
-
-% optional microsoft word style
-\ifthenelse{\boolean{@useWordStyle}}%
-           {\RequirePackage{wordlike}%
-            \RequirePackage[doublespacing]{setspace}}%
-           {}
 
 % angle brackets
 \newcommand{\ab}[1]{\textup{⟨}#1\textup{⟩}}
