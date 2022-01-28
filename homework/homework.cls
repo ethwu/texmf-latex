@@ -1,7 +1,7 @@
 % Homework LaTeX class. Inherits from `article`.
 % (c) 2020 Ethan Wu CC BY-SA 4.0
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{homework}[2021-11-10 Basic Homework Class]
+\ProvidesClass{homework}[2021-11-16 Basic Homework Class]
 
 \RequirePackage{etoolbox}
 
@@ -54,12 +54,14 @@
 %%% typefaces %%%
 \RequirePackage{fontspec}
 \RequirePackage[babel, tracking=true]{microtype}
+% reduce letterspacing for small caps
+\SetTracking{encoding=*, shape=sc}{10}
 % improved hyphenation
 \RequirePackage{hyphenat}
 % caps/lowercase
 \RequirePackage{textcase}
-% `emph` style small caps
-\newcommand{\impt}[1]{\textsc{\MakeTextLowercase{#1}}}
+% % `emph` style small caps
+% \newcommand{\impt}[1]{\textsc{\MakeTextLowercase{\oldstylenums{#1}}}}
 
 %%% math %%%
 \RequirePackage{siunitx}    % units
