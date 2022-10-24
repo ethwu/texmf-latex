@@ -1,0 +1,4 @@
+[submodule "PF2e-TeX"]
+	path = PF2e-TeX
+	url = git@github.com:serialhex/PF2e-TeX
+    shallow = true
