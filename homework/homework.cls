@@ -1,7 +1,7 @@
 % Homework LaTeX class. Inherits from `article`.
 % (c) 2020 Ethan Wu CC BY-SA 4.0
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{homework}[2021-11-16 Basic Homework Class]
+\ProvidesClass{homework}[2022-10-23 Basic Homework Class]
 
 \RequirePackage{etoolbox}
 
@@ -83,6 +83,10 @@
 \def\ceil{\@ifstar{\@ceil}{\@ceil*}}
 \def\floor{\@ifstar{\@floor}{\@floor*}}
 \def\norm{\@ifstar{\@norm}{\@norm*}}
+
+% Probability symbol
+\def\Prob{\ensuremath{\mathbb{P}}}
+\def\Expect{\ensuremath{\mathbb{E}}}
 
 \newcommand*{\set}[1]{\ensuremath{\ifthenelse{\isempty{#1}}
                                              {\emptyset}
