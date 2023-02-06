@@ -1,20 +1,20 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{paper}[2023-02-06]
+\ProvidesClass{lunwen}[2023-02-06 Configurable styles for writing papers.]
 
 \RequirePackage{etoolbox}
 
 % Microsoft Word style.
-\newbool{zhi:word}
+\newbool{lunwen:word}
 \DeclareOption{word}{%
-    \booltrue{zhi:word}%
+    \booltrue{lunwen:word}%
     \PassOptionsToClass{12pt}{article}%
 }
 % Load bibliography packages.
-\newbool{zhi:bib}\DeclareOption{bib}{\booltrue{zhi:bib}}
+\newbool{lunwen:bib}\DeclareOption{bib}{\booltrue{lunwen:bib}}
 % Load table packages.
-\newbool{zhi:tab}\DeclareOption{tab}{\booltrue{zhi:tab}}
+\newbool{lunwen:tab}\DeclareOption{tab}{\booltrue{lunwen:tab}}
 % Load reference packages.
-\newbool{zhi:ref}\DeclareOption{ref}{\booltrue{zhi:ref}}
+\newbool{lunwen:ref}\DeclareOption{ref}{\booltrue{lunwen:ref}}
 % Pass through undefined options.
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions*\relax
@@ -28,7 +28,7 @@
 
 \RequirePackage{geometry}
 
-\ifbool{zhi:word}{%
+\ifbool{lunwen:word}{%
     % Microsoft Word style.
 
     % Use Microsoft Word fonts.
@@ -74,20 +74,20 @@
     \titlespacing*{\subparagraph}{\parindent}{*1}{*0.5}%
 }{}
 
-\ifbool{zhi:tab}{%
+\ifbool{lunwen:tab}{%
     % Provide table packages.
 
     % Table formatting.
     \RequirePackage{booktabs}%
 }{}
-\ifbool{zhi:bib}{%
+\ifbool{lunwen:bib}{%
     % Provide bibliography packages.
 
     % Chicago author-date citations.
     \RequirePackage[authordate]{biblatex-chicago}%
 }{}
 
-\ifbool{zhi:ref}{
+\ifbool{lunwen:ref}{
     % Provide reference linking packages.
 
     % Hyperlink references.
