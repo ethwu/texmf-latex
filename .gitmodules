@@ -2,3 +2,11 @@
 	path = PF2e-TeX
 	url = git@github.com:serialhex/PF2e-TeX
     shallow = true
+[submodule "multidoc"]
+	path = multidoc
+	url = git@github.com:ethwu/multidoc
+    shallow = true
+[submodule "santas-workshop"]
+	path = santas-workshop
+	url = git@github.com:ethwu/santas-workshop
+    shallow = true

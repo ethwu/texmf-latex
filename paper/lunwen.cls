@@ -38,6 +38,8 @@
     \else
         \RequirePackage{luatextra}
     \fi
+    % Unicode super- and subscripts.
+    \RequirePackage{realscripts}
     \defaultfontfeatures{Ligatures=TeX}
 \fi
 
@@ -55,36 +57,40 @@
     \RequirePackage{setspace}
 
     % Use Microsoft Word fonts.
-    \ifPDFTeX\else
-    \IfFontExistsTF{Times Roman}{
-        \setmainfont{Times Roman}
-        \setromanfont{Times Roman}
-    }{
-        \setmainfont{Times New Roman}
-        \setromanfont{Times New Roman}
-    }
-    \ifbool{lunwen:word:fonts}{
-        % Just use Arial and Courier New.
-        \setsansfont{Arial}
-        \setmonofont{Courier New}
-    }{
-        % Replace Arial with Helvetica.
-        \IfFontExistsTF{Helvetica}{
-            \setsansfont{Helvetica}
+    \ifPDFTeX
+        \RequirePackage{mathptmx}
+        \RequirePackage[scaled=.90]{helvet}
+        \RequirePackage{courier}
+    \else
+        \IfFontExistsTF{Times Roman}{
+            \setmainfont{Times Roman}
+            \setromanfont{Times Roman}
         }{
+            \setmainfont{Times New Roman}
+            \setromanfont{Times New Roman}
+        }
+        \ifbool{lunwen:word:fonts}{
+            % Just use Arial and Courier New.
             \setsansfont{Arial}
-        }
-        % Replace Courier New with Courier Prime.
-        \IfFontExistsTF{Courier Prime}{
-            \setmonofont{Courier Prime}
-        }{
             \setmonofont{Courier New}
+        }{
+            % Replace Arial with Helvetica.
+            \IfFontExistsTF{Helvetica}{
+                \setsansfont{Helvetica}
+            }{
+                \setsansfont{Arial}
+            }
+            % Replace Courier New with Courier Prime.
+            \IfFontExistsTF{Courier Prime}{
+                \setmonofont{Courier Prime}
+            }{
+                \setmonofont{Courier New}
+            }
         }
-    }
     \fi
 
     % Set the margins to 1 inch.
-    \geometry{margin=1in}
+    \geometry{includefoot, margin=1in}
 
     % Style title block.
 

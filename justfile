@@ -3,3 +3,7 @@
 hash:
     texhash
 
+# Update submodules
+update:
+    git submodule update --init --recursive
+
